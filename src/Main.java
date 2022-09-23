@@ -1,4 +1,6 @@
+import com.model.Course;
 import com.model.Professor;
+import com.model.Student;
 import com.service.AcademicService;
 
 import java.util.Optional;
@@ -39,7 +41,25 @@ public class Main {
     }
 
     private static void enrollStudentToCourse(AcademicService academicService) {
-        //TODO implement this method
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("Enter the student id: ");
+        String studentId = scanner.nextLine();
+        Optional<Student> studentById = academicService.findStudentById(studentId);
+        if (studentById.isPresent()) {
+            Student student = studentById.get();
+            System.out.println("Enter the course name: ");
+            String courseName = scanner.nextLine();
+            Optional<Course> courseByName = academicService.findCourseByName(courseName);
+            if (courseByName.isPresent()) {
+                Course course = courseByName.get();
+                student.enrollToCourse(course);
+                System.out.println("Student enrollment successful");
+            } else {
+                System.out.println("Course with name: " + courseByName + " not found");
+            }
+        } else {
+            System.out.println("Student with id: " + studentId + " not found");
+        }
     }
 
     private static void registerNewStudent(AcademicService academicService) {
