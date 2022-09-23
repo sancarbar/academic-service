@@ -16,13 +16,34 @@ public class Main {
         while (option != 8) {
 
             switch (option) {
-                case 1 -> registerNewProfessor(academicService);
-                case 2 -> registerNewCourse(academicService);
-                case 3 -> registerNewStudent(academicService);
-                case 4 -> enrollStudentToCourse(academicService);
-                case 5 -> findAProfessor(academicService);
-                case 6 -> System.out.println("Selected option 6");
-                case 7 -> System.out.println("Selected option 7");
+                case 1: {
+                    registerNewProfessor(academicService);
+                    break;
+                }
+                case 2: {
+                    registerNewCourse(academicService);
+                    break;
+                }
+                case 3: {
+                    registerNewStudent(academicService);
+                    break;
+                }
+                case 4: {
+                    enrollStudentToCourse(academicService);
+                    break;
+                }
+                case 5: {
+                    findAProfessor(academicService);
+                    break;
+                }
+                case 6: {
+                    System.out.println("Selected option 6");
+                    break;
+                }
+                case 7: {
+                    System.out.println("Selected option 7");
+                    break;
+                }
             }
             option = showOptionsMenuAndCaptureOption();
         }
