@@ -1,4 +1,6 @@
+import com.model.Course;
 import com.model.Professor;
+import com.model.Student;
 import com.service.AcademicService;
 
 import java.util.Optional;
@@ -14,13 +16,34 @@ public class Main {
         while (option != 8) {
 
             switch (option) {
-                case 1 -> registerNewProfessor(academicService);
-                case 2 -> registerNewCourse(academicService);
-                case 3 -> registerNewStudent(academicService);
-                case 4 -> enrollStudentToCourse(academicService);
-                case 5 -> findAProfessor(academicService);
-                case 6 -> System.out.println("Selected option 6");
-                case 7 -> System.out.println("Selected option 7");
+                case 1: {
+                    registerNewProfessor(academicService);
+                    break;
+                }
+                case 2: {
+                    registerNewCourse(academicService);
+                    break;
+                }
+                case 3: {
+                    registerNewStudent(academicService);
+                    break;
+                }
+                case 4: {
+                    enrollStudentToCourse(academicService);
+                    break;
+                }
+                case 5: {
+                    findAProfessor(academicService);
+                    break;
+                }
+                case 6: {
+                    System.out.println("Selected option 6");
+                    break;
+                }
+                case 7: {
+                    System.out.println("Selected option 7");
+                    break;
+                }
             }
             option = showOptionsMenuAndCaptureOption();
         }
@@ -39,7 +62,25 @@ public class Main {
     }
 
     private static void enrollStudentToCourse(AcademicService academicService) {
-        //TODO implement this method
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("Enter the student id: ");
+        String studentId = scanner.nextLine();
+        Optional<Student> studentById = academicService.findStudentById(studentId);
+        if (studentById.isPresent()) {
+            Student student = studentById.get();
+            System.out.println("Enter the course name: ");
+            String courseName = scanner.nextLine();
+            Optional<Course> courseByName = academicService.findCourseByName(courseName);
+            if (courseByName.isPresent()) {
+                Course course = courseByName.get();
+                student.enrollToCourse(course);
+                System.out.println("Student enrollment successful");
+            } else {
+                System.out.println("Course with name: " + courseByName + " not found");
+            }
+        } else {
+            System.out.println("Student with id: " + studentId + " not found");
+        }
     }
 
     private static void registerNewStudent(AcademicService academicService) {

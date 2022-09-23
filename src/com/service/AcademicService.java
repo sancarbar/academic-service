@@ -8,18 +8,20 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
-public class AcademicService {
+public class AcademicService implements AcademicServiceI {
 
     final List<Course> coursesList = new ArrayList<>();
     final List<Professor> professorList = new ArrayList<>();
     final List<Student> studentsList = new ArrayList<>();
 
+    @Override
     public void addCourse(Course course) {
         if (!coursesList.contains(course)) {
             coursesList.add(course);
         }
     }
 
+    @Override
     public Optional<Course> findCourseByName(String name) {
 
         return coursesList.stream()
