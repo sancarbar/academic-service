@@ -39,15 +39,15 @@ public class Main {
     }
 
     private static void enrollStudentToCourse(AcademicService academicService) {
-
+        //TODO implement this method
     }
 
     private static void registerNewStudent(AcademicService academicService) {
-
+        //TODO implement this method
     }
 
     private static void registerNewCourse(AcademicService academicService) {
-
+        //TODO implement this method
     }
 
     private static void registerNewProfessor(AcademicService academicService) {
