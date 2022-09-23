@@ -19,6 +19,15 @@ public class Student {
         this.phoneNumber = phoneNumber;
     }
 
+    public boolean enrollToCourse(Course course) {
+        if (enrolledCourses.contains(course)) {
+            return false;
+        } else {
+            enrolledCourses.add(course);
+        }
+        return true;
+    }
+
     public String getId() {
         return id;
     }
